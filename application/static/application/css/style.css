@@ -1,0 +1,164 @@
+/* =============================================================================
+   GenAI Application CSS Styles
+   
+   This stylesheet contains all the styling for the GenAI application, including:
+   - General page layout and typography
+   - Form styling for the prompt input and model selection
+   - Output display styling for both raw and formatted outputs
+   - Responsive adjustments for different screen sizes
+============================================================================= */
+
+/* =============================================================================
+   Base Styles and Typography
+============================================================================= */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Modern, clean font stack */
+    line-height: 1.6;                /* Comfortable line height for readability */
+    color: #333;                     /* Soft black for better readability */
+    max-width: 1200px;               /* Limit width on large screens */
+    margin: 0 auto;                  /* Center the content */
+    padding: 20px;                   /* Add some space around the content */
+}
+
+h1 {
+    color: #2c3e50;                  /* Dark blue-gray for headings */
+    text-align: center;              /* Center the main heading */
+    margin-bottom: 30px;             /* Space between heading and content */
+}
+
+.container {
+    padding: 0 15px;                 /* Add horizontal padding */
+}
+
+/* Help text styling */
+.help-text {
+    color: #666;                     /* Lighter color for help text */
+    font-size: 14px;                 /* Slightly smaller than normal text */
+    margin-top: 5px;                 /* Space between input and help text */
+    display: block;                  /* Display as block element */
+}
+
+/* =============================================================================
+   Form Styles - Input fields, buttons, and form layout
+============================================================================= */
+.form-group {
+    margin-bottom: 20px;             /* Space between form elements */
+}
+
+label {
+    display: block;                  /* Make labels block elements */
+    margin-bottom: 5px;              /* Space between label and input */
+    font-weight: bold;               /* Make labels stand out */
+}
+
+.form-control {
+    width: 100%;                     /* Full width inputs */
+    padding: 10px;                   /* Comfortable padding */
+    border: 1px solid #ddd;          /* Subtle border */
+    border-radius: 4px;              /* Rounded corners */
+    font-size: 16px;                 /* Readable font size */
+}
+
+/* Specific styling for the textarea */
+textarea.form-control {
+    min-height: 120px;               /* Taller textarea for prompt input */
+}
+
+/* Submit button styling */
+button.btn {
+    background-color: #3498db;       /* Blue button */
+    color: white;                    /* White text */
+    border: none;                    /* No border */
+    padding: 10px 20px;              /* Comfortable padding */
+    border-radius: 4px;              /* Rounded corners */
+    cursor: pointer;                 /* Hand cursor on hover */
+    font-size: 16px;                 /* Readable font size */
+    transition: background-color 0.3s; /* Smooth transition for hover effect */
+}
+
+button.btn:hover {
+    background-color: #2980b9;       /* Darker blue on hover */
+}
+
+/* =============================================================================
+   Output Display - Raw and formatted output containers
+============================================================================= */
+.output-container {
+    margin-top: 30px;                /* Space between form and outputs */
+    display: flex;                   /* Use flexbox for layout */
+    flex-wrap: wrap;                 /* Allow wrapping on smaller screens */
+    gap: 20px;                       /* Space between output boxes */
+}
+
+.output-box {
+    flex: 1;                         /* Equal width for both boxes */
+    min-width: 300px;                /* Minimum width to ensure readability */
+    border: 1px solid #ddd;          /* Subtle border */
+    border-radius: 4px;              /* Rounded corners */
+    padding: 15px;                   /* Internal padding */
+    background-color: #f9f9f9;       /* Light gray background */
+    margin-bottom: 20px;             /* Bottom margin for spacing */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05); /* Subtle shadow for depth */
+}
+
+.output-box h3 {
+    margin-top: 0;                   /* Remove top margin */
+    color: #2c3e50;                  /* Match heading color */
+    border-bottom: 1px solid #eee;   /* Subtle separator */
+    padding-bottom: 10px;            /* Space after heading */
+}
+
+/* Raw markdown output styling */
+.raw-output {
+    white-space: pre-wrap;           /* Preserve whitespace but wrap */
+    font-family: monospace;          /* Monospace font for code */
+    background-color: #f5f5f5;       /* Light gray background */
+    padding: 10px;                   /* Internal padding */
+    border-radius: 4px;              /* Rounded corners */
+    overflow-x: auto;                /* Horizontal scrolling if needed */
+}
+
+/* Formatted HTML output styling */
+.formatted-output {
+    padding: 10px;                   /* Internal padding */
+    border-radius: 4px;              /* Rounded corners */
+    background-color: white;         /* White background */
+}
+
+/* Ensure images don't overflow */
+.formatted-output img {
+    max-width: 100%;                 /* Make images responsive */
+    height: auto;                    /* Maintain aspect ratio */
+}
+
+/* Style code blocks in formatted output */
+.formatted-output pre {
+    background-color: #f5f5f5;       /* Light gray background */
+    padding: 10px;                   /* Internal padding */
+    border-radius: 4px;              /* Rounded corners */
+    overflow-x: auto;                /* Horizontal scrolling if needed */
+    font-family: 'Courier New', Courier, monospace; /* Monospace font */
+}
+
+/* Add styling for model info text */
+.model-info {
+    text-align: center;              /* Center text */
+    color: #666;                     /* Gray text */
+    margin-top: 20px;                /* Top margin */
+    font-size: 14px;                 /* Slightly smaller text */
+}
+
+/* =============================================================================
+   Responsive Adjustments - Adapt layout for different screen sizes
+============================================================================= */
+@media (max-width: 768px) {
+    /* Stack output boxes vertically on smaller screens */
+    .output-container {
+        flex-direction: column;      /* Stack vertically */
+    }
+    
+    /* Make output boxes full width */
+    .output-box {
+        min-width: 100%;             /* Full width */
+    }
+}

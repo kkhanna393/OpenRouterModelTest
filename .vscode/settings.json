@@ -1,0 +1,8 @@
+{
+    "terminal.integrated.env.windows": {
+        "OPENROUTER_API_KEY": "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"
+    },
+    "python.analysis.extraPaths": [
+        "${workspaceFolder}"
+    ]
+}

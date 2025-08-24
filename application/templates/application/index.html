@@ -1,0 +1,75 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GenAI Application</title>
+    <!-- Load the CSS styles for the application -->
+    <link rel="stylesheet" href="{% static 'application/css/style.css' %}">
+</head>
+<body>
+    <div class="container">
+        <!-- Application header -->
+        <h1>GenAI Application</h1>
+        
+        <!-- 
+            Form for submitting prompts to AI models
+            - Uses POST method to submit data
+            - Includes CSRF protection token
+            - Points to the index view using the named URL pattern
+        -->
+        <form method="post" action="{% url 'application:index' %}">
+            {% csrf_token %}
+            
+            <!-- Prompt input field -->
+            <div class="form-group">
+                <label for="{{ form.prompt.id_for_label }}">{{ form.prompt.label }}</label>
+                {{ form.prompt }}
+                {% if form.prompt.help_text %}
+                <small class="help-text">{{ form.prompt.help_text }}</small>
+                {% endif %}
+            </div>
+            
+            <!-- Model selection dropdown -->
+            <div class="form-group">
+                <label for="{{ form.model.id_for_label }}">{{ form.model.label }}</label>
+                {{ form.model }}
+                {% if form.model.help_text %}
+                <small class="help-text">{{ form.model.help_text }}</small>
+                {% endif %}
+            </div>
+            
+            <!-- Submit button -->
+            <button type="submit" class="btn">Generate Response</button>
+        </form>
+        
+        <!-- 
+            Results section - only displayed when there is output
+            Shows both raw markdown and formatted HTML output side by side
+        -->
+        {% if raw_output %}
+        <div class="output-container">
+            <!-- Left panel: Raw markdown output -->
+            <div class="output-box">
+                <h3>Raw Markdown Output</h3>
+                <div class="raw-output">{{ raw_output }}</div>
+            </div>
+            
+            <!-- Right panel: Formatted HTML output -->
+            <div class="output-box">
+                <h3>Formatted Output</h3>
+                <!-- The 'safe' filter allows HTML to be rendered instead of escaped -->
+                <div class="formatted-output">{{ formatted_output|safe }}</div>
+            </div>
+        </div>
+        
+        <!-- Display which model was used -->
+        {% if selected_model %}
+        <p class="model-info">Generated using: <strong>{{ selected_model }}</strong></p>
+        {% endif %}
+        
+        {% endif %}
+    </div>
+</body>
+</html>
